@@ -9,7 +9,7 @@ params.g = 9.81;         % m/s^2   Aceleración gravitacional
 params.Bp = 0.0024;      % Nms/rad Coeficiente de amortiguamiento en el eje del péndulo
 
 % Condiciones iniciales
-alpha0 = deg2rad(1);  % grados a radianes
+alpha0 = deg2rad(1);  % Convertimos de grados a radianes
 xc0 = 0;
 alphadot0 = 0;
 xcdot0 = 0;
@@ -19,10 +19,10 @@ x0 = [xc0; xcdot0; alpha0; alphadot0]; % Vector de condiciones iniciales
 % Tiempo de simulación
 tspan = [0 20];
 
-% Resolver ode45, pasando los parámetros
+% Resolver el sistema con ode45, pasando los parámetros
 [t, sol] = ode45(@(t, x) pendulumODE(t, x, params), tspan, x0);
 
-% Graficar 
+% Graficar los resultados
 
 % Desplazamiento del carrito
 figure;
@@ -57,7 +57,7 @@ ylabel('Velocidad angular α˙ (rad/s)');
 title('Velocidad angular del péndulo');
 grid on;
 
-% Función del sistema de ecdif
+% Función del sistema de ecuaciones diferenciales
 function dx = pendulumODE(t, x, params)
     xc = x(1);
     xcdot = x(2);
